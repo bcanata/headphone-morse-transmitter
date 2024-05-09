@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width">
-  <title>🎧 Morse Verici</title>
+  <title>🎧 Morse Oluşturucu</title>
   <base target="_blank">
   <style>
     body, input {
@@ -26,7 +26,7 @@
   </style>
 </head>
 <body>
-  <h1>🎧 Morse Verici</h1>
+  <h1>🎧 Morse Oluşturucu</h1>
   <div>⏸️ Duraklat/Oynat: . (dit)</div>
   <div>⏯️ Sonraki parça: - (dah)</div>
   <div>⏮️ Önceki parça: ← (sil)</div>
@@ -45,19 +45,16 @@
   <div id="txtStatus"></div>
   <div>
     <p>💡
-      <a href="https://en.wikipedia.org/wiki/Morse_code">Morse Kodu Viki</a>
+      <a href="https://tr.wikipedia.org/wiki/Mors_alfabesi">Morse Alfabesi - Viki</a>
     </p>
     <p class="example">🧪
-      <span class="H">....</span>
+      <span class="M">--</span>
       <span class="E">.</span>
-      <span class="L">.-..</span>
-      <span class="L">.-..</span>
-      <span class="O">---</span>
-      <span class="W">.--</span>
-      <span class="O">---</span>
       <span class="R">.-.</span>
-      <span class="L">.-..</span>
-      <span class="D">-..</span>
+      <span class="H">....</span>
+      <span class="A">.-</span>
+      <span class="B">-...</span>
+      <span class="A">.-</span>
     </p>
   </div>
   <audio id="audio" loop="true" controls hidden></audio>
@@ -114,7 +111,7 @@
         say(char.toLowerCase())
         txtOutput.value += char
       } else {
-        say('geçersiz')
+        say('invalid')
       }
       inputCodes = ''
       showInput()
@@ -144,7 +141,7 @@
     navigator.mediaSession.setActionHandler('previoustrack', () => {
       inputCodes = ''
       showInput()
-      say('geri')
+      say('backspace')
       clearTimeout(timerId)
       txtOutput.value = txtOutput.value.slice(0, -1)
     })
