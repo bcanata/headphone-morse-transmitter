@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width">
-  <title>🎧 Morse Transmitter</title>
+  <title>🎧 Morse Verici</title>
   <base target="_blank">
   <style>
     body, input {
@@ -26,18 +26,18 @@
   </style>
 </head>
 <body>
-  <h1>🎧 Morse Transmitter</h1>
-  <div>⏸️ Pause/Play: . (dit)</div>
-  <div>⏯️ Next track: - (dah)</div>
-  <div>⏮️ Prev track: ← (del)</div>
+  <h1>🎧 Morse Verici</h1>
+  <div>⏸️ Duraklat/Oynat: . (dit)</div>
+  <div>⏯️ Sonraki parça: - (dah)</div>
+  <div>⏮️ Önceki parça: ← (sil)</div>
   <div>
-    ⏰ Delay: <input id="txtDelay" type="number" value="1500"> ms
+    ⏰ Gecikme: <input id="txtDelay" type="number" value="1500"> ms
   </div>
   <div>
-    ⌛️ Input: <span id="txtInput"></span>
+    ⌛️ Giriş: <span id="txtInput"></span>
   </div>
   <div>
-    <div>📖 Words:</div>
+    <div>📖 Kelimeler:</div>
     <div>
       <textarea id="txtOutput"></textarea>
     </div>
@@ -45,7 +45,7 @@
   <div id="txtStatus"></div>
   <div>
     <p>💡
-      <a href="https://en.wikipedia.org/wiki/Morse_code">Morse Code Wiki</a>
+      <a href="https://en.wikipedia.org/wiki/Morse_code">Morse Kodu Viki</a>
     </p>
     <p class="example">🧪
       <span class="H">....</span>
@@ -105,7 +105,7 @@
     let inputCodes = ''
 
     function showInput() {
-      txtInput.textContent = inputCodes || 'reading...'
+      txtInput.textContent = inputCodes || 'okunuyor...'
     }
 
     function flushInput() {
@@ -114,7 +114,7 @@
         say(char.toLowerCase())
         txtOutput.value += char
       } else {
-        say('invalid')
+        say('geçersiz')
       }
       inputCodes = ''
       showInput()
@@ -144,12 +144,12 @@
     navigator.mediaSession.setActionHandler('previoustrack', () => {
       inputCodes = ''
       showInput()
-      say('backspace')
+      say('geri')
       clearTimeout(timerId)
       txtOutput.value = txtOutput.value.slice(0, -1)
     })
 
-    showStatus('click anywhere to start...')
+    showStatus('başlamak için herhangi bir yere tıklayın...')
 
 
     function genBgm() {
@@ -195,7 +195,7 @@
       audio.src = genBgm()
       audio.play()
 
-      showStatus('input ready')
+      showStatus('giriş hazır')
       showInput()
     }, {once: true})
   </script>
